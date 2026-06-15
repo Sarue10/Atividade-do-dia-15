@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 Questões JavaScript</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0;padding:20px}
+h1{text-align:center}
+.card{background:#fff;padding:15px;margin:12px 0;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+input,select{padding:8px;margin:4px}
+button{padding:8px 12px;cursor:pointer}
+.result{margin-top:8px;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>20 Questões Interativas - JavaScript</h1>
+
+<div id="app"></div>
+
+<script>
+const app = document.getElementById("app");
+
+for(let i=1;i<=20;i++){
+ const d=document.createElement("div");
+ d.className="card";
+ d.innerHTML=`<h3>Questão ${i}</h3><div id="q${i}"></div><div class="result" id="r${i}"></div>`;
+ app.appendChild(d);
+}
+
+q1.innerHTML=`Idade <input id=i1 type=number><button onclick="r1.textContent=(i1.value<12?'R$15':i1.value<=24?'R$20':i1.value>=60?'R$17,50':'R$35')">Calcular</button>`;
+
+q2.innerHTML=`Temperatura <input id=i2 type=number><button onclick="let t=+i2.value; r2.textContent=(t<0?'Congelante':t<=15?'Resfriado':t<=30?'Ideal':'Superaquecimento')+(t===100?' | Perigo: Vapor':'')">Verificar</button>`;
+
+q3.innerHTML=`Média <input id=m3 type=number step=0.1> Frequência <input id=f3 type=number><button onclick="let m=+m3.value,f=+f3.value;r3.textContent=(m>=7&&f>=75)?'Aprovado':(m>=5&&m<7&&f>=75)?'Recuperação':'Reprovado'">Resultado</button>`;
+
+q4.innerHTML=`Salário <input id=s4 type=number> Parcela <input id=p4 type=number> Meses Empresa <input id=t4 type=number><button onclick="r4.textContent=(+t4.value<6||+p4.value>(+s4.value*0.3))?'Negado':'Aprovado'">Analisar</button>`;
+
+q5.innerHTML=`Usuário Logado <select id=l5><option>true</option><option>false</option></select> Assinatura <select id=a5><option>true</option><option>false</option></select><button onclick="let l=l5.value==='true',a=a5.value==='true';r5.textContent=l&&a?'Acesso liberado':l?'Assinatura necessária':'Login necessário'">Verificar</button>`;
+
+q6.innerHTML=`Ano <input id=i6 type=number><button onclick="let a=+i6.value;r6.textContent=((a%4===0&&a%100!==0)||a%400===0)?'Bissexto':'Não bissexto'">Verificar</button>`;
+
+q7.innerHTML=`Usuário <input id=u7> Senha <input id=s7><button onclick="r7.textContent=(u7.value==='admin'&&s7.value==='1234')?'Acesso Total':(u7.value==='guest'&&s7.value==='guest')?'Acesso Limitado':'Falha na Autenticação'">Entrar</button>`;
+
+q8.innerHTML=`Cor <input id=c8><button onclick="let c=c8.value.toLowerCase();r8.textContent=c==='verde'?'Siga':c==='amarelo'?'Atenção':c==='vermelho'?'Pare':'Semáforo com defeito'">Verificar</button>`;
+
+q9.innerHTML=`Número <input id=n9 type=number><button onclick="let n=+n9.value;r9.textContent=n===0?'Zero':n<0?'Negativo':n%2===0?'Positivo e Par':'Positivo e Ímpar'">Verificar</button>`;
+
+q10.innerHTML=`Compra <input id=v10 type=number> VIP <select id=vip10><option>true</option><option>false</option></select><button onclick="let v=+v10.value,vip=vip10.value==='true';r10.textContent=(v>200&&vip)?'Frete grátis':vip?'Frete R$10':'Frete R$25'">Calcular</button>`;
+
+q11.innerHTML=`A <input id=a11 type=number>B <input id=b11 type=number>C <input id=c11 type=number><button onclick="let A=+a11.value,B=+b11.value,C=+c11.value;r11.textContent=!(A<B+C&&B<A+C&&C<A+B)?'Não forma triângulo':(A===B&&B===C)?'Equilátero':(A===B||A===C||B===C)?'Isósceles':'Escaleno'">Classificar</button>`;
+
+q12.innerHTML=`Idade <input id=i12 type=number><button onclick="r12.textContent=(+i12.value>=16)?'Pode votar':'Não pode'">Verificar</button>`;
+
+q13.innerHTML=`Nota <input id=n13><button onclick="let n=n13.value.toUpperCase();r13.textContent=(n==='A'||n==='B')?'Excelente':n==='C'?'Suficiente':'Insuficiente'">Converter</button>`;
+
+q14.innerHTML=`Febre <input type=checkbox id=f14> Tosse <input type=checkbox id=t14> Fadiga <input type=checkbox id=fa14><button onclick="let s=(f14.checked?1:0)+(t14.checked?1:0)+(fa14.checked?1:0);r14.textContent=s===3?'Procure um médico':s===2?'Fique em observação':'Saúde instável'">Analisar</button>`;
+
+q15.innerHTML=`Peso <input id=p15 type=number step=0.1> Altura <input id=a15 type=number step=0.01><button onclick="let imc=(+p15.value)/(+a15.value*+a15.value);r15.textContent=imc<18.5?'Abaixo':imc<25?'Normal':imc<30?'Sobrepeso':'Obesidade'">Calcular</button>`;
+
+q16.innerHTML=`Número <input id=n16 type=number><button onclick="let n=+n16.value;r16.textContent=n%15===0?'FizzBuzz':n%3===0?'Fizz':n%5===0?'Buzz':'Nenhum'">Verificar</button>`;
+
+q17.innerHTML=`Valor <input id=v17 type=number><button onclick="let v=+v17.value;r17.textContent='Final: R$'+(v>=500?v*0.8:v>=200?v*0.9:v).toFixed(2)">Calcular</button>`;
+
+q18.innerHTML=`Texto <input id=t18><button onclick="r18.textContent=t18.value.trim()===''?'Vazia':'Preenchida'">Verificar</button>`;
+
+q19.innerHTML=`Dado <input id=d19 type=number><button onclick="let d=+d19.value;r19.textContent=d===20?'Crítico':d===1?'Falha Crítica':'Dano Normal'">Verificar</button>`;
+
+q20.innerHTML=`Hora <input id=h20 type=number><button onclick="let h=+h20.value;r20.textContent=h<=5?'Boa madrugada':h<=11?'Bom dia':h<=17?'Boa tarde':'Boa noite'">Verificar</button>`;
+</script>
+</body>
+</html>
